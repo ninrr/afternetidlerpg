@@ -1,0 +1,41 @@
+#!/bin/bash
+cat /home/ircd/idlerpg/bot.v3.1.2/modifiers.txt \
+| grep "won the royal tournament" \
+| sed 's/^\[.*\] \(.*\) has .*$/\1/g' \
+| sort \
+| uniq -c \
+| sed 's/^ *//' \
+| sed 's/\(^[0-9] \)/0\1/ ' \
+| sed 's/\(^[0-9][0-9] \)/0\1/ ' \
+| sed 's/\(^[0-9][0-9][0-9] \)/0\1/ ' \
+| sort -k 1,1r -k 2 \
+| sed 's/^0*//' \
+| sed 's/^\(.*\) \(.*\)$/<li><a href="playerview\.php\?player\=\2">\2<\/a> (\1)<\/li>/' \
+> /home/ircd/idlerpg/bot.v3.1.2/royal.txt
+
+cat /home/ircd/idlerpg/bot.v3.1.2/modifiers.txt \
+| grep "declared himself unfit for tournament" \
+| sed 's/^\[.*\] \(.*\) has .*$/\1/g' \
+| sort \
+| uniq -c \
+| sed 's/^ *//' \
+| sed 's/\(^[0-9] \)/0\1/ ' \
+| sed 's/\(^[0-9][0-9] \)/0\1/ ' \
+| sed 's/\(^[0-9][0-9][0-9] \)/0\1/ ' \
+| sort -k 1,1r -k 2 \
+| sed 's/^0*//' \
+| sed 's/^\(.*\) \(.*\)$/<li><a href="playerview\.php\?player\=\2">\2<\/a> (\1)<\/li>/' \
+> /home/ircd/idlerpg/bot.v3.1.2/royalsuck.txt
+
+cat /home/ircd/idlerpg/bot.v3.1.2/modifiers.txt \
+| grep "The war between the four " \
+| tail \
+| sed 's/\[/<b>\[/g' \
+| sed 's/\]/\]<\/b>/g' \
+| sed 's/\(.*\)/<li>\1<\/li>/' \
+| sed 's/Northwest/<span style="font-weight:bold;color:red;">Northwest<\/span>/g' \
+| sed 's/Northeast/<span style="font-weight:bold;color:orange;">Northeast<\/span>/g' \
+| sed 's/Southwest/<span style="font-weight:bold;color:green;">Southwest<\/span>/g' \
+| sed 's/Southeast/<span style="font-weight:bold;color:purple;">Southeast<\/span>/g' \
+> /home/ircd/idlerpg/bot.v3.1.2/wars.txt
+
