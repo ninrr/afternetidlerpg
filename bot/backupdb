@@ -1,0 +1,7 @@
+#!/bin/bash
+irpgdate=`date +%Y%m%d%H%M%S`
+cp /home/ircd/idlerpg/bot.v3.1.2/irpg.db /home/ircd/idlerpg/bot.v3.1.2/backup/irpg.db.$irpgdate
+cp /home/ircd/idlerpg/bot.v3.1.2/mapitems.db /home/ircd/idlerpg/bot.v3.1.2/backup/mapitems.db.$irpgdate
+cp /home/ircd/idlerpg/bot.v3.1.2/modifiers.txt /home/ircd/idlerpg/bot.v3.1.2/backup/modifiers.txt.$irpgdate
+cp /home/ircd/idlerpg/bot.v3.1.2/idlerpg.pl /home/ircd/idlerpg/bot.v3.1.2/backup/idlerpg.pl.$irpgdate
+chmod 600 /home/ircd/idlerpg/bot.v3.1.2/backup/*

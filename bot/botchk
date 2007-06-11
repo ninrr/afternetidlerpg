@@ -1,0 +1,14 @@
+#! /bin/sh
+fdir="/home/ircd/idlerpg/bot.v3.1.2"
+fpid=".irpg.pid"
+cd $fdir
+if [ -f $fpid ]
+then
+	pid=`cat $fpid`
+	if [ `ps -p $pid | wc -l` -eq 2 ]
+	then
+		exit
+	fi
+	rm -rf $fpid
+fi
+/usr/bin/perl -w /home/ircd/idlerpg/bot.v3.1.2/idlerpg.pl
